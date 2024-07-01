@@ -69,14 +69,7 @@ router.get('/:taste',async(req,res)=>{
 router.delete('/:id',async(req,res)=>{
   try{
     const idtype= req.params.id;
-    // if(['sweet','spicy','salty'].includes(tastetype)){
-    //   const response= await MenuItem.findByIdAndDelete({taste:tastetype});
-    //   console.log('Data fetched successfully');
-    //   res.status(200).json(response);
-    // }
-    // else{
-    //   return res.status(404).json({ error: 'Not found' });
-    // }
+
     const response= await MenuItem.findByIdAndDelete(idtype);
     if (response) {
       console.log('Data deleted successfully');

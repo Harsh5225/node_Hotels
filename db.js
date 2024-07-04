@@ -1,19 +1,20 @@
-const mongoose = require('mongoose');
+const mongoose=require('mongoose');
+require('dotenv').config();
+//  const mongoURL=process.env.MONGODB_URL_LOCAL;
 
-// URL connection to MongoDB
-const mongoURL = 'mongodb://localhost:27017/Hotels';
+const mongoURL=process.env.MONGODB_URL_LOCAL;
+
 mongoose.connect(mongoURL)
-  .then(() => {
-    console.log("Connected to MongoDB server");
-  })
-  .catch((err) => {
-    console.error('MongoDB connection error:', err);
-  });
+    .then(()=>{
+        console.log("Connected to MongDB server");
+    })
+    .catch((err)=>{
+        console.log("MongoDb connection error:",err);
+    })
 
-const db = mongoose.connection;
+const db=mongoose.connection;
 
-db.on('disconnected', () => {
-  console.log("Connection to MongoDB server lost");
-});
-
-module.exports = db;
+db.on('disconnected',()=>{
+    console.log("Connection to MongDB server lost");
+})
+module.exports=db;
